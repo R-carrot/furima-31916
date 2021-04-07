@@ -53,13 +53,13 @@
 | ------------------ | ------------------- | ----------------------- |
 | text               | text                | null: false             |
 | user               | references          | foreign_key: true       |
-| products           | references          | foreign_key: true       |
+| items              | references          | foreign_key: true       |
 
 
 ### Association
 
 - belongs_to :user
-- belongs_to :products
+- belongs_to :items
 
 
 
@@ -68,7 +68,7 @@
 | Colum              | Type                | Options                 |
 | ------------------ | ------------------- | ----------------------- |
 | user               | references          | foreign_key             |
-| products           | references          | foreign_key             |
+| items              | references          | foreign_key             |
 
 
 ### Association
