@@ -3,24 +3,23 @@
 
 ## users table
 
-| Column                 | Type                | Options                 |
-|------------------------|---------------------|-------------------------|
-| email                  | string              | null: false             |
-| password               | string              | null: false             |
-| nickname               | string              | null: false             |
-| first_name             | string              | null: false             |
-| last_name              | string              | null: false             |
-| first_name_katakana    | string              | null: false             |
-| last_name_katakana     | string              | null: false             |
-| birth_year             | integer             | null: false             |
-| birth_month            | integer             | null: false             |
-| birth_day              | integer             | null: false             |
+| Column                 | Type                | Options                  |
+|------------------------|---------------------|--------------------------|
+| email                  | string              | null: false, unique: true|
+| encrypted_password     | string              | null: false              |
+| nickname               | string              | null: false              |
+| first_name             | string              | null: false              |
+| last_name              | string              | null: false              |
+| first_name_katakana    | string              | null: false              |
+| last_name_katakana     | string              | null: false              |
+| birth_day              | datetime            | null: false              |
 
 
 ### Association
 
 - has_many :items
 - has_many :comments
+- has_one  :buyer
 
 
 
@@ -30,11 +29,11 @@
 | ------------------ | ------------------- | ----------------------- |
 | title              | string              | null: false             |
 | explain            | text                | null: false             |
-| category           | integer             | null: false             |
-| state              | integer             | null: false             |
-| delivery_fee       | integer             | null: false             |
-| owner_region       | integer             | null: false             |
-| delivery_date      | integer             | null: false             |
+| category_id        | integer             | null: false             |
+| state_id           | integer             | null: false             |
+| delivery_fee_id    | integer             | null: false             |
+| owner_region_id    | integer             | null: false             |
+| delivery_date_id   | integer             | null: false             |
 | price              | integer             | null: false             |
 | user               | references          | foreign_key: true       |
 
@@ -47,14 +46,14 @@
 
 
 
-## comments table
+<!-- ## comments table
 
 | Colum              | Type                | Options                 |
 | ------------------ | ------------------- | ----------------------- |
 | text               | text                | null: false             |
 | user               | references          | foreign_key: true       |
-| items              | references          | foreign_key: true       |
-
+| item               | references          | foreign_key: true       |
+ -->
 
 ### Association
 
@@ -67,14 +66,16 @@
 
 | Colum              | Type                | Options                 |
 | ------------------ | ------------------- | ----------------------- |
-| user               | references          | foreign_key             |
-| items              | references          | foreign_key             |
+| user               | references          | foreign_key: true       |
+| item               | references          | foreign_key: true       |
+| delivery_info      | references          | foreign_key: true       |
 
 
 ### Association
 
 - belongs_to  :item
 - has_one     :delivery_info
+- belongs_to  :user
 
 
 
@@ -83,12 +84,8 @@
 
 | Colum              | Type                | Options                 |
 | ------------------ | ------------------- | ----------------------- |
-| card_number        | string              | null: false             |
-| effective_year     | string              | null: false             |
-| effective_month    | string              | null: false             |
-| card_security_code | string              | null: false             |
 | postal_code        | string              | null: false             |
-| prefecture         | integer             | null: false             |
+| prefecture_id      | integer             | null: false             |
 | city               | string              | null: false             |
 | address            | string              | null: false             |
 | building           | string              |                         |
@@ -98,5 +95,3 @@
 ### Association
 
 - belongs_to :buyer
-- belongs_to :user
-- belongs_to :item
