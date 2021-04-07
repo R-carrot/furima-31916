@@ -12,7 +12,7 @@
 | last_name              | string              | null: false              |
 | first_name_katakana    | string              | null: false              |
 | last_name_katakana     | string              | null: false              |
-| birth_day              | datetime            | null: false              |
+| birth_day              | date                | null: false              |
 
 
 ### Association
@@ -32,7 +32,7 @@
 | category_id        | integer             | null: false             |
 | state_id           | integer             | null: false             |
 | delivery_fee_id    | integer             | null: false             |
-| owner_region_id    | integer             | null: false             |
+| prefecture_id      | integer             | null: false             |
 | delivery_date_id   | integer             | null: false             |
 | price              | integer             | null: false             |
 | user               | references          | foreign_key: true       |
