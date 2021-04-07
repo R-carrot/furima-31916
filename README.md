@@ -18,8 +18,8 @@
 ### Association
 
 - has_many :items
-- has_many :comments
-- has_one  :buyer
+<!-- - has_many :comments -->
+- has_many :buyers
 
 
 
@@ -40,7 +40,7 @@
 
 ### Association 
 
-- has_many    :comments
+<!-- - has_many    :comments -->
 - belongs_to  :user
 - has_one     :buyer
 
@@ -55,10 +55,10 @@
 | item               | references          | foreign_key: true       |
  -->
 
-### Association
+<!-- ### Association
 
 - belongs_to :user
-- belongs_to :items
+- belongs_to :items -->
 
 
 
@@ -68,7 +68,6 @@
 | ------------------ | ------------------- | ----------------------- |
 | user               | references          | foreign_key: true       |
 | item               | references          | foreign_key: true       |
-| delivery_info      | references          | foreign_key: true       |
 
 
 ### Association
@@ -90,6 +89,7 @@
 | address            | string              | null: false             |
 | building           | string              |                         |
 | phone_number       | string              | null: false             |
+| buyers             | references          | foreign_key: true       |
 
 
 ### Association
