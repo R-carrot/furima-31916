@@ -5,7 +5,6 @@ FactoryBot.define do
     password = Faker::Internet.password(min_length: 6)
     password {password}
     encrypted_password {password}
-    # password_confirmation {password}
     first_name {Gimei.name.first.kanji}
     last_name {Gimei.name.last.kanji}
     first_name_katakana {Gimei.name.first.katakana}
