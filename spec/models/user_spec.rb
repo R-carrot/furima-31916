@@ -80,7 +80,7 @@ RSpec.describe User, type: :model do
     it 'パスワードは、半角英数字混合での入力が必須であること' do
       @user.password = "000000"
       @user.valid?
-      expect(@user.errors.full_messages).to include("Encrypted password is invalid")
+      expect(@user.errors.full_messages).to include("Password is invalid")
     end
 
     it 'パスワードとパスワード（確認用）は、値の一致が必須であること' do
@@ -100,6 +100,18 @@ RSpec.describe User, type: :model do
       @user.last_name_katakana = "ひらがな"
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name katakana is invalid")
+    end
+
+    it 'passwordが全角では登録できないこと' do
+      @user.password = "パスワード"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
+
+    it 'passwordが英語のみでは登録できないこと' do
+      @user.password = "password"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
     end
   end
 end
