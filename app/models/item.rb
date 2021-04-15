@@ -15,6 +15,7 @@ class Item < ApplicationRecord
     validates :title
     validates :explain
     validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { in: 300..9999999}
+    validates :image
   end
 
   with_options numericality: { other_than: 1 } do
