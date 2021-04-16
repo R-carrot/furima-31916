@@ -9,12 +9,11 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :delivery_fee
   belongs_to :delivery_date
-  # belongs_to_active_hash :delivery_date
 
   with_options presence: true do
     validates :title
     validates :explain
-    validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { in: 300..9999999}
+    validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { :greater_than => 299, :less_than => 10000000 }
     validates :image
   end
 

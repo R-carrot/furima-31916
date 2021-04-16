@@ -92,6 +92,18 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("User must exist")
       end
+
+      it '価格が299円以下では出品できないこと' do
+        @item.price = Faker::Number.between( from:0, to: 299)
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than 299")
+      end
+
+      it '価格が10000000円以上では出品できないこと' do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than 10000000")
+      end
     end
   end
 end
