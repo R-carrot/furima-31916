@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :explain
-    validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { :greater_than => 299, :less_than => 10000000 }
+    validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than: 299, less_than: 10000000 }
     validates :image
   end
 
