@@ -8,13 +8,9 @@ window.addEventListener('load', function(){
       addTaxDom.innerHTML = Math.floor( inputValue / 10);
       const value = inputValue / 10;
       profit.innerHTML = Math.floor( inputValue - value );
-      console.log(addTaxDom);
-      console.log(profit);
     } else {
       addTaxDom.innerHTML = "";
       profit.innerHTML = "";
-      console.log(addTaxDom);
-      console.log(profit);
     }
     // $(function (){
     //   $("#item-price").on("input", function(){
