@@ -73,13 +73,13 @@
 ### Association
 
 - belongs_to  :item
-- has_one     :delivery_info
+- has_one     :order
 - belongs_to  :user
 
 
 
 
-## delivery_info table
+## order table
 
 | Colum              | Type                | Options                 |
 | ------------------ | ------------------- | ----------------------- |
