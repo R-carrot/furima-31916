@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2021_04_14_060527) do
     t.string "address", null: false
     t.string "building"
     t.string "phone_number", null: false
-    t.bigint "buyers_id"
-    t.index ["buyers_id"], name: "index_orders_on_buyers_id"
+    t.bigint "buyer_id"
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,5 +92,5 @@ ActiveRecord::Schema.define(version: 2021_04_14_060527) do
   add_foreign_key "buyers", "items"
   add_foreign_key "buyers", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "orders", "buyers", column: "buyers_id"
+  add_foreign_key "orders", "buyers"
 end

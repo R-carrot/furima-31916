@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
+  bafore_action :set_item, only: [:index, :create]
+
   def index
     @order = BuyerOrder.new
-    # set_item
   end
 
   def create
@@ -19,15 +20,15 @@ class OrdersController < ApplicationController
   private
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
   def order_params
-    params.require(:buyer_order).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number, :item_id).merge(token: params[:token], user_id: current_user.id)
+    params.require(:buyer_order).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(token: params[:token], user_id: current_user.id, item_id: @item.id)
   end
 
   def pay_item
-    @item = Item.find(params[:item_id])
+    set_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,
