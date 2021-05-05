@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
 
   def index
-    if @item.user = current_user || @item.buyer.present?
+    if @item.user == current_user || @item.buyer.present?
       redirect_to root_path
     end
     @order = BuyerOrder.new
