@@ -24,6 +24,14 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     if @item.user == current_user && @item.buyer.blank?
       @item.destroy
