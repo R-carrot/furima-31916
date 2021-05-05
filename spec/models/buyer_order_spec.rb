@@ -15,6 +15,7 @@ RSpec.describe BuyerOrder, type: :model do
       end
 
       it 'トークン、郵便番号、都道府県、市区町村、番地、電話番号があれば購入できること' do
+        @order.building = ''
         expect(@order).to be_valid
       end
 
