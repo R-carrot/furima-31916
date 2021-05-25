@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        encrypted_password: 確認用パスワード
+        nickname: ニックネーム
+        first_name: 性
+        last_name: 名
+        first_name_katakana: 性(カナ)
+        last_name_katakana: 名(カナ)
+        birth_day: 生年月日
+      item:
+        title: 商品名
+        explain: 商品の説明
+        category_id: カテゴリー
+        state_id: 商品の状態
+        delivery_fee_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        delivery_date_id: 発送までの日数
+        price: 価格
+        image: 画像
+        user: ユーザー
+      order:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市町村
+        address: 番地
+        building: ビル名
+        phone_number: 電話番号
+        token: クレジットカード情報

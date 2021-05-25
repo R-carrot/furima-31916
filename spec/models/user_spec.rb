@@ -19,62 +19,62 @@ RSpec.describe User, type: :model do
       it 'nicknameが空では登録できないこと' do
         @user.nickname = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+        expect(@user.errors.full_messages).to include("ニックネームを入力してください")
       end
 
       it 'emailが空では登録できないこと' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
+        expect(@user.errors.full_messages).to include("メールアドレスを入力してください")
       end
 
       it 'passwordが空では登録できないこと' do
         @user.password = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
+        expect(@user.errors.full_messages).to include("パスワードを入力してください")
       end
 
       it 'last_nameが空では登録できないこと' do
         @user.last_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name can't be blank")
+        expect(@user.errors.full_messages).to include("性を入力してください")
       end
 
       it 'first_nameが空では登録できないこと' do
         @user.first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name can't be blank")
+        expect(@user.errors.full_messages).to include("名を入力してください")
       end
 
       it 'last_name_katakanaが空では登録できないこと' do
         @user.last_name_katakana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name katakana can't be blank")
+        expect(@user.errors.full_messages).to include("性(カナ)を入力してください")
       end
 
       it 'first_name_katakanaが空では登録できないこと' do
         @user.first_name_katakana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name katakana can't be blank")
+        expect(@user.errors.full_messages).to include("名(カナ)を入力してください")
       end
 
       it 'birth_dayが空では登録できないこと' do
         @user.birth_day = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Birth day can't be blank")
+        expect(@user.errors.full_messages).to include("生年月日を入力してください")
       end
 
       it 'メールアドレスが一意性であること' do
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Email has already been taken")
+        expect(another_user.errors.full_messages).to include("メールアドレスはすでに存在します")
       end
 
       it 'メールアドレスが@を含む必要があること' do
         @user.email = 'hoge'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include("メールアドレスは不正な値です")
       end
 
       it 'パスワードが6文字以上での入力が必須であること' do
